@@ -4,7 +4,7 @@ class AddStudent extends Component{
     render(){
         return(
             <div>
-                <h1>Teetty Krittib</h1>
+                <h1>Add Student</h1>
             </div>
         )
     }

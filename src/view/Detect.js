@@ -1,4 +1,4 @@
-sdjfjsdfkjimport React,{Component} from 'react';
+import React,{Component} from 'react';
 import { loadModels, getFullFaceDescription } from '../api/face';
 import { Image } from 'semantic-ui-react'
 
