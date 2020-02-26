@@ -6,6 +6,7 @@ import Header from './component/Header';
 import Detect from './view/Detect';
 import AddStudent from './view/AddStudent';
 import AddParent from './view/AddParent';
+import Show from './view/Show';
 
 class App extends Component {
   render() { 
@@ -18,6 +19,7 @@ class App extends Component {
               <Route path="/detect" component={Detect}/>
               <Route path="/addstudent" component={AddStudent}/>
               <Route path="/addparent" component={AddParent}/>
+              <Route path="/show/:id" component={Show}/>
             </Switch>
         </Router>
       </div>
