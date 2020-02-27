@@ -14,9 +14,11 @@ class AddStudent extends Component{
         super(props);
         this.state = { ...INIT_STATE,
             image: null,
-            name : "",
-            stdId: "",
-            urllink: "",
+            name : '',
+            stdId: '',
+            urllink: '',
+            email: '',
+            address: ''
         };
       }
 
@@ -65,6 +67,18 @@ class AddStudent extends Component{
         })
     }
 
+    handleEmailChange = (e) =>{
+      this.setState({
+        email: e.target.value
+      })
+    }
+
+    handleAddressChange = (e) =>{
+      this.setState({
+        address: e.target.value
+      })
+    }
+
     handleUpload = () => {
         console.log("debug");
         const {image} = this.state;
@@ -87,12 +101,14 @@ class AddStudent extends Component{
                     imageURL: this.state.urllink,
                     name: this.state.name,
                     stdId: this.state.stdId,
-                    descriptors: Array.from(this.state.fullDesc[0].descriptor)
+                    descriptors: Array.from(this.state.fullDesc[0].descriptor),
+                    email: this.state.email,
+                    address: this.state.address
                 }
                 Firebase.firestore().collection("student").doc().set(data).then(function() {
                   console.log("Document successfully written!");
                   alert("Add data Successful");
-                  //this.props.history.push('/');
+                  this.props.history.push('/');
               });
             })
         });
@@ -140,35 +156,59 @@ class AddStudent extends Component{
             />
             <div style={{ position: 'relative' }}>
               <div style={{ position: 'absolute' }}>
-              <Image src={imageURL} />{
+              <Image src={imageURL} />
+              {
                   this.state.fullDesc == null ? <p></p>: 
+                  
                   <div>
+                  <div className="ui form">
                     <br/>
-                        <label><b>Fullname :</b></label>
-                        <br/>
-                        <div className="ui left icon input">
-                            <input type="text" 
-                                    placeholder="Fullname"
-                                    onChange={this.handleNameChange}
-                                    value={this.state.name}/>
-                            <i aria-hidden="true" class="users icon"></i>
+                    <div className="equal width fields">
+                        <div className="field">
+                          <label><b>Fullname :</b></label>
+                          <div className="ui left icon input">
+                              <input type="text" 
+                                      placeholder="Fullname"
+                                      onChange={this.handleNameChange}
+                                      value={this.state.name}/>
+                              <i aria-hidden="true" class="users icon"></i>
+                          </div>
                         </div>
-                        <br/>
-                        <label><b>Student ID :</b></label>
-                        <br/>
-                        <div className="ui left icon input">
-                            <input type="text" 
-                                    placeholder="Student ID"
-                                    onChange={this.handlestdIDChange} />
-                            <i aria-hidden="true" class="users icon"></i>
+                        <div className="field">
+                          <label><b>Student ID :</b></label>
+                          <div className="ui left icon input">
+                              <input type="text" 
+                                      placeholder="Student ID"
+                                      onChange={this.handlestdIDChange} />
+                              <i aria-hidden="true" class="user icon"></i>
+                          </div>
+                        </div>
+                       <div className="field">
+                        <label><b>Email :</b></label>
+                            <div className="ui left icon input">
+                                <input type="text" 
+                                        placeholder="Email"
+                                        onChange={this.handleEmailChange}
+                                        value={this.state.email}/>
+                                <i aria-hidden="true" class="mail icon"></i>
+                            </div>
+                        </div>
+                      </div>
+                        <label><b>Address :</b></label>
+                        <div className="field">
+                          <textarea placeholder="Tell us more about you..." 
+                                    rows="3" 
+                                    onChange={this.handleAddressChange}
+                                    value={this.state.address} ></textarea>
                         </div>
                         <button onClick={this.handleUpload} className="btn btn-success">Add to Database</button>
-                </div>
+                  </div>
+                  </div>
                   }
-                </div>
-              {!!drawBox ? drawBox : null}
             </div>
+            {!!drawBox ? drawBox : null}
           </div>
+        </div>
         );
       }
 }

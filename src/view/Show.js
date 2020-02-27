@@ -1,6 +1,6 @@
-import React,{Component} from 'react';
+import React,{ Component } from 'react';
 import Firebase from '../Firebase';
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react';
 
 class Show extends Component{
     constructor(props) {
@@ -8,7 +8,9 @@ class Show extends Component{
         this.state={
             name: '',
             imageURL: '',
-            stdId: ''
+            stdId: '',
+            email: '',
+            address: ''
         };
     }
 
@@ -20,6 +22,8 @@ class Show extends Component{
                 name : doc.data().name,
                 imageURL : doc.data().imageURL,
                 stdId : doc.data().stdId,
+                email: doc.data().email,
+                address : doc.data().address
             })
         })
         .catch(err => {
@@ -37,17 +41,15 @@ class Show extends Component{
                         <Card.Header>{this.state.name}</Card.Header>
                         <Card.Meta>{this.state.stdId}</Card.Meta>
                         <Card.Description>
-                        Steve wants to add you to the group <strong>best friends</strong>
+                        Email: {this.state.email}
+                        <br/>
+                        {this.state.address}
                         </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
                         <div className='ui two buttons'>
-                        <Button basic color='yellow'>
-                            Edit Profile
-                        </Button>
-                        <Button basic color='violet'>
-                            Add Parent
-                        </Button>
+                        <a  href={'/edit/'+ this.props.match.params.id} class="ui yellow basic button">Edit Profile</a>
+                        <a  href={'/addparent/'+ this.props.match.params.id} class="ui violet basic button">AddParent</a>
                         </div>
                     </Card.Content>
                 </Card>

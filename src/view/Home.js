@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import Firebase from '../Firebase';
 import {Link} from 'react-router-dom';
-import { Image, Item, Button } from 'semantic-ui-react';
+import { Item, Button } from 'semantic-ui-react';
 
 class Home extends Component {
     constructor(props) {
@@ -26,7 +26,8 @@ class Home extends Component {
                 myData += '"id" : "' + doc.id + '",'
                 myData += '"name" : "' + doc.data().name + '",'
                 myData += '"stdId" : "' + doc.data().stdId + '",'
-                myData += '"imageURL" : "' + doc.data().imageURL + '"'
+                myData += '"imageURL" : "' + doc.data().imageURL + '",'
+                myData += '"address" : "' + doc.data().address + '"'
                 myData += '},'
             });
             myData = myData.substring(0,myData.length-1);
@@ -86,7 +87,7 @@ class Home extends Component {
                                     <Item.Header as='a'>{key.name}</Item.Header>
                                     <Item.Meta>Student ID: {key.stdId}</Item.Meta>
                                     <Item.Description>
-                                    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+                                    {key.address}
                                     </Item.Description>
                                     <Item.Extra> 
                                         <Link to={'/show/'+key.id}>
