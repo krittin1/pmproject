@@ -7,6 +7,8 @@ import Detect from './view/Detect';
 import AddStudent from './view/AddStudent';
 import AddParent from './view/AddParent';
 import Show from './view/Show';
+import Edit from './view/Edit';
+import ShowParent from './view/ShowParent';
 
 class App extends Component {
   render() { 
@@ -18,8 +20,10 @@ class App extends Component {
               <Route exact path="/" component={Home}/>
               <Route path="/detect" component={Detect}/>
               <Route path="/addstudent" component={AddStudent}/>
-              <Route path="/addparent" component={AddParent}/>
+              <Route path="/addparent/:id" component={AddParent}/>
               <Route path="/show/:id" component={Show}/>
+              <Route path="/edit/:id" component={Edit}/>
+              <Route path="/showparent/:id" component={ShowParent}/>
             </Switch>
         </Router>
       </div>

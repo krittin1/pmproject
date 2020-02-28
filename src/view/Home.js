@@ -67,7 +67,7 @@ class Home extends Component {
                 <br/>
                 <div class="ui one column stackable center aligned page grid">
                     <div class="column twelve wide">
-                        <div className="ui transparent icon input">
+                        <div className="ui icon input">
                             <input  type="text" 
                                     placeholder="Search..."
                                     onChange={this.filterList}

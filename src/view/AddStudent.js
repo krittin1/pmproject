@@ -91,9 +91,7 @@ class AddStudent extends Component{
             console.log(error);
         },
         () => {
-            Firebase.storage().ref('student').child(image.name).getDownloadURL().then(url =>{
-                console.log(url);
-                console.log(this.state.fullDesc);
+            Firebase.storage().ref('student').child(image.name).getDownloadURL().then(url =>{ 
                 this.setState({
                     urllink : url.toString()
                 })
@@ -105,11 +103,11 @@ class AddStudent extends Component{
                     email: this.state.email,
                     address: this.state.address
                 }
-                Firebase.firestore().collection("student").doc().set(data).then(function() {
+                Firebase.firestore().collection("student").doc().set(data)
+                .then(function() {
                   console.log("Document successfully written!");
                   alert("Add data Successful");
-                  this.props.history.push('/');
-              });
+                });
             })
         });
 

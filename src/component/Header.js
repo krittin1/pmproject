@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import{Link} from 'react-router-dom';
-import { Menu, Segment } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
 class Header extends Component {
     constructor(props) {
@@ -34,13 +34,6 @@ class Header extends Component {
             <Menu.Item
                 name='add student'
                 active={this.state.activeItem === 'add student'}
-                onClick={this.handleItemClick}
-            />
-          </Link>
-          <Link to="/addparent">
-            <Menu.Item
-                name='add parents'
-                active={this.state.activeItem === 'add parents'}
                 onClick={this.handleItemClick}
             />
           </Link>

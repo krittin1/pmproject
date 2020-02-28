@@ -1,5 +1,6 @@
 import React,{ Component } from 'react';
 import Firebase from '../Firebase';
+import { Link } from 'react-router-dom';
 import { Card, Image } from 'semantic-ui-react';
 
 class Show extends Component{
@@ -10,7 +11,8 @@ class Show extends Component{
             imageURL: '',
             stdId: '',
             email: '',
-            address: ''
+            address: '',
+            parent: []
         };
     }
 
@@ -24,6 +26,16 @@ class Show extends Component{
                 stdId : doc.data().stdId,
                 email: doc.data().email,
                 address : doc.data().address
+            })
+            Firebase.firestore().collection('parent')
+            .where('studentID','==',this.props.match.params.id).get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    this.setState({
+                        parent: [...this.state.parent, doc]
+                    })
+                    console.log(doc);
+                })
             })
         })
         .catch(err => {
@@ -44,6 +56,12 @@ class Show extends Component{
                         Email: {this.state.email}
                         <br/>
                         {this.state.address}
+                        <br/>
+                        Parent: {this.state.parent.map((key, index) =>
+                            
+                                <li><Link to={'/showparent/'+ key.id}>{key.data().name}</Link></li>
+                        )}
+                        
                         </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
