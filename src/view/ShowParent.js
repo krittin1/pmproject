@@ -45,7 +45,7 @@ class ShowParent extends Component{
                     </div>
                     <div class="content">
                         <div class="header">{this.state.name}</div>
-                        <div class="meta"><Icon link name='call' /> {this.state.tel}</div>
+                        <div class="meta"><a href={this.state.tel}><Icon link name='call' /> {this.state.tel}</a></div>
                         <div class="description"><Icon link name='linechat' /> : {this.state.line_id}</div>
                         <div class="extra">Extra</div>
                     </div>
