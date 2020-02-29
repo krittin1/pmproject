@@ -35,6 +35,7 @@ class Pick extends Component{
                         std_data : [...this.state.std_data, doc.data()]
                     })
                 })
+                console.log(this.state.std_id)
             })
         })
     }
@@ -69,7 +70,7 @@ class Pick extends Component{
                                 src={key.imageURL}
                             />
                             <p>Name: {key.name}</p>
-                            <p>Student ID : {key.student_ID}</p>
+                            <p>Student ID : {key.stdId}</p>
                             </Grid.Column>
                         </Grid>
                         )

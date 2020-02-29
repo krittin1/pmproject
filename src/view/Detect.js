@@ -101,7 +101,9 @@ class Detect extends Component{
         }
       };
       showDetect =(index) =>{
-        this.props.history.push('pick/'+index);
+        if(index !== 'unknown'){
+          this.props.history.push('pick/'+index);
+        }
       }
     render (){
       const { detections, match, facingMode } = this.state;
