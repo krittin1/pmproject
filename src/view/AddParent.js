@@ -109,7 +109,6 @@ class AddParent extends Component{
                 Firebase.firestore().collection("parent").doc().set(data).then(function() {
                   console.log("Document successfully written!");
                   alert("Add data Successful");
-                  this.props.history.push('/show/'+this.props.match.params.id);
               });
             })
         });
@@ -191,7 +190,7 @@ class AddParent extends Component{
                             <div className="ui left icon input">
                                 <input type="text" 
                                         placeholder="Line ID"
-                                        onChange={this.handleEmailChange}
+                                        onChange={this.handleLineChange}
                                         value={this.state.line_id}/>
                                 <i aria-hidden="true" class="linechat icon"></i>
                             </div>
