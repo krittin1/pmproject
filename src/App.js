@@ -9,6 +9,7 @@ import AddParent from './view/AddParent';
 import Show from './view/Show';
 import Edit from './view/Edit';
 import ShowParent from './view/ShowParent';
+import Pick from './view/Pick';
 
 class App extends Component {
   render() { 
@@ -24,6 +25,7 @@ class App extends Component {
               <Route path="/show/:id" component={Show}/>
               <Route path="/edit/:id" component={Edit}/>
               <Route path="/showparent/:id" component={ShowParent}/>
+              <Route path="/pick/:id" component={Pick}/>
             </Switch>
         </Router>
       </div>

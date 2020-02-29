@@ -27,8 +27,6 @@ class Detect extends Component{
 
       componentDidMount = async () => {
         await loadModels();
-        console.log(JSON_PROFILE);
-        console.log(JSON_PROFILE);
         this.setInputDevice();
         await this.castJson();
       };
@@ -48,10 +46,8 @@ class Detect extends Component{
           return JSON.parse(data);
         }).then(async json => {
           JSON_PROFILE = json;
-          console.log(JSON_PROFILE);
           this.setState({ faceMatcher: await createMatcher(JSON_PROFILE) });
         })
-        console.log(JSON_PROFILE);
       }
 
       setInputDevice = () => {
@@ -104,7 +100,9 @@ class Detect extends Component{
           }
         }
       };
-
+      showDetect =(index) =>{
+        this.props.history.push('pick/'+index);
+      }
     render (){
       const { detections, match, facingMode } = this.state;
     let videoConstraints = null;
@@ -152,9 +150,11 @@ class Detect extends Component{
                     color: '#fff',
                     transform: `translate(-3px,${_H}px)`
                   }}
+                  onChange={this.showDetect(match[i]._label)}
                 >
                   {match[i]._label}
                 </p>
+                
               ) : null}
             </div>
           </div>
