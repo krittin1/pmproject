@@ -70,9 +70,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 
-### how to install project
-####1. open cmd
-####2. git clone (project).git
-####3. cd to project folder
-####4. npm install
-####5. npm start
+## how to install project
+###1. open cmd
+###2. git clone (project).git
+###3. cd to project folder
+###4. npm install
+###5. npm start
